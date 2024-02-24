@@ -50,21 +50,21 @@ namespace BubbleSortAnimatedWPF
             //BubbleSortBox.Text = "\n\nW-Width: " + newWindowWidth.ToString() + "\nBox-Width: " + BubbleSortBox.Margin.ToString();
         }
 
-        private void BubbleSorting(List<int> unsortedIntegerList)
+        private async void BubbleSorting(List<int> unsortedIntegerList)
         {
             List<int> sortingList = new List<int>();
             
             int buffer = 0;
 
-            for(int i = 100; i >= 0; i--)
+            for(int i = 10; i > 0; i--)
             {
-                sortingList.Clear();
+                BubbleSortBox.Clear();
 
-                for(int x = 0; x < unsortedIntegerList.Count() - 1; x++) 
+                for (int x = 0; x < unsortedIntegerList.Count() - 1; x++) 
                 {
                     buffer = unsortedIntegerList[x];
 
-                    if(unsortedIntegerList.Count() == x + 1)
+                    if(x == unsortedIntegerList.Count())
                     {
                         continue;
                     }
@@ -72,20 +72,20 @@ namespace BubbleSortAnimatedWPF
                     {
                         if (unsortedIntegerList[x + 1] < buffer)
                         {
-                            sortingList.Add(unsortedIntegerList[x + 1]);
-                            sortingList.Add(buffer);
+                            unsortedIntegerList[x]      = unsortedIntegerList[x + 1];
+                            unsortedIntegerList[x + 1]  = buffer;
                         }
                     }
                 }
 
-                BubbleSortBox.Clear();
-                BubbleSortBox.AppendText("\n\n\n");
+                BubbleSortBox.AppendText("\n\n");
 
-                foreach (var item in sortingList)
+                foreach (var item in unsortedIntegerList)
                 {
                     BubbleSortBox.AppendText($"\t{item}");
-                    Task.Delay(500);
                 }
+
+                await Task.Delay(500);
             }
         }
     }
