@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BubbleSortAnimatedWPF"
         mc:Ignorable="d"
-        Title="B U B B L E - S O R T | @Mullins182" Height="800" Width="1350" WindowState="Normal" WindowStartupLocation="CenterScreen" FontSize="10" Background="Blue">
+        Title="B U B B L E - S O R T | @Mullins182" Height="800" Width="1350" WindowState="Normal" WindowStartupLocation="CenterScreen" FontSize="10" Background="#FFFF7F">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="0" Width="auto"/>
@@ -21,8 +21,8 @@
         
         <!-- Beginn UI-Elemente -->
 
-        <TextBlock x:Name="BubbleSortBox" Grid.Row="1" Grid.Column="1" Height="500" Width="500" HorizontalAlignment="Center" Background="Black" Foreground="FloralWhite"
-                   FontSize="40" TextAlignment="Center" TextDecorations="OverLine"/>
+        <TextBox x:Name="BubbleSortBox" Grid.Row="1" Grid.Column="1" Height="500" Width="500" HorizontalAlignment="Center" Background="Black" Foreground="FloralWhite"
+                   FontSize="23" TextWrapping="Wrap"/>
         <Label x:Name="BubbleSortBoxLabel" Grid.Column="1" Grid.Row="1" Width="auto" Height="auto" Content="Bubble Box" FontFamily="Chiller" FontSize="50" Foreground="OrangeRed"
                />
 
