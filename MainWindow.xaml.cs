@@ -29,7 +29,7 @@ namespace BubbleSortAnimatedWPF
 
             this.SizeChanged += OnWindowSizeChanged;
 
-            BubbleSorting(unsortedIntegerList);
+            BubbleSorting(unsortedIntegerList);            
         }
 
         // Event-Methode wenn Fenstergröße sich ändert ! In der Methode wird die Bubblesort Box und das Label dafür responsiv gemacht (Abhängig von Fenstergröße)
@@ -46,7 +46,7 @@ namespace BubbleSortAnimatedWPF
 
             newBoxMargin.Left           = (newWindowWidth  / 2) - (BubbleSortBox.ActualWidth  / 2) - 8;
             newBoxMargin.Top            = (newWindowHeight / 2) - (BubbleSortBox.ActualHeight / 2) - 19.5;
-            newLabelMargin.Left         = (newWindowWidth / 2)  - (BubbleSortBox.ActualWidth / 5);
+            newLabelMargin.Left         = (newWindowWidth / 2)  - (BubbleSortBox.ActualWidth / 6) + 40;
             newLabelMargin.Top          = (newWindowHeight / 2) - (BubbleSortBox.ActualHeight / 2) - 20;
 
             BubbleSortBox.Margin        = newBoxMargin;
@@ -61,8 +61,32 @@ namespace BubbleSortAnimatedWPF
             
             int buffer = 0;
 
-            for(int i = 120; i > 0; i--)
+            BubbleSortBox.Clear();
+
+            BubbleSortBox.AppendText("\n\n");
+
+            foreach (var item in unsortedIntegerList)
             {
+                BubbleSortBox.AppendText($"\t{item}");
+            }
+
+            TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {0}%";
+
+            await Task.Delay(3000);
+
+            BubbleSortBoxLabel.Foreground = Brushes.GreenYellow;
+
+            for(int i = 0; i <= 100; i++)
+            {
+                if(i % 100 == 0 && i != 0)
+                {
+                    TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {100}%";
+                }
+                else
+                {
+                    TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {i % 100}%";
+                }
+
                 BubbleSortBox.Clear();
 
                 for (int x = 0; x < unsortedIntegerList.Count() - 1; x++) 
@@ -90,8 +114,24 @@ namespace BubbleSortAnimatedWPF
                     BubbleSortBox.AppendText($"\t{item}");
                 }
 
-                await Task.Delay(250);
+                await Task.Delay(200);
             }
+
+            BubbleSortBoxLabel.Foreground = Brushes.OrangeRed;
+        }
+
+        private void BubbleSortBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BubbleSortBox.BorderBrush = Brushes.DarkGoldenrod;
+            BubbleSortBox.IsInactiveSelectionHighlightEnabled = false;
+            BubbleSortBox.SelectionBrush = Brushes.DarkGoldenrod;
+        }
+
+        private void BubbleSortBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BubbleSortBox.BorderBrush = Brushes.DarkGoldenrod;
+            BubbleSortBox.IsInactiveSelectionHighlightEnabled = false;
+            BubbleSortBox.SelectionBrush = Brushes.DarkGoldenrod;
         }
     }
 }
