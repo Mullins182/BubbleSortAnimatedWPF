@@ -20,7 +20,7 @@ namespace BubbleSortAnimatedWPF
         {   505,  888,  203,  744,  216,  449,  197,  500,  284,  548,  159,  845,  159,  949,  691,  981,  324,  563,  854,  468,  117,  465,  502,  413,  232,
             645,  848,  646,  549,  765,  225,  437,  681,  2,  44,  362,  845,  895,  627,  43,  708,  883,  950,  268,  814,  747,  689,  568,  504,  234,  781,
             780,  574,  759,  937,  95,  761,  934,  936,  523,  459,  55,  698,  551,  111,  649,  499,  879,  77,  446,  89,  503,  917,  1,  988,  435,  689,
-            797,  950,  885,  501,  706,  84,  771,  782,  380,  916,  484,  525,  135,  495,  265,  428,  389,  662,  411,  876,  604, 650, 915
+            797,  950,  885,  501,  706,  84,  771,  782,  380,  916,  484,  525,  135,  495,  265,  428,  389,  662,  411,  876,  604, 650, 915, 637, 999
         };
 
         public MainWindow()
@@ -58,8 +58,10 @@ namespace BubbleSortAnimatedWPF
         private async void BubbleSorting(List<int> unsortedIntegerList)
         {
             List<int> sortingList = new List<int>();
-            
-            int buffer = 0;
+
+            int buffer  = 0;
+
+            int counter = 1;
 
             BubbleSortBox.Clear();
 
@@ -67,7 +69,15 @@ namespace BubbleSortAnimatedWPF
 
             foreach (var item in unsortedIntegerList)
             {
-                BubbleSortBox.AppendText($"\t{item}");
+
+                if(counter % 8 == 0)
+                {
+                    BubbleSortBox.AppendText($"\n{item}\t");
+                }
+
+                BubbleSortBox.AppendText($"{item}\t");
+
+                counter++;
             }
 
             TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {0}%";
@@ -108,10 +118,18 @@ namespace BubbleSortAnimatedWPF
                 }
 
                 BubbleSortBox.AppendText("\n\n");
+                counter = 1;
 
                 foreach (var item in unsortedIntegerList)
                 {
-                    BubbleSortBox.AppendText($"\t{item}");
+                    if (counter % 8 == 0)
+                    {
+                        BubbleSortBox.AppendText($"\n{item}\t");
+                    }
+
+                    BubbleSortBox.AppendText($"{item}\t");
+
+                    counter++;
                 }
 
                 await Task.Delay(200);
