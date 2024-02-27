@@ -97,57 +97,56 @@ namespace BubbleSortAnimatedWPF
                 {
                     while (!bubblesort_active)
                     {
-                        await Task.Delay(666);
+                        //Thread.Sleep(250);
+                        await Task.Delay(250);
                     }
+                }
+
+                if(i % 100 == 0 && i != 0)
+                {
+                    TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {100}%";
                 }
                 else
                 {
-                    if(i % 100 == 0 && i != 0)
+                    TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {i % 100}%";
+                }
+
+                BubbleSortBox.Clear();
+
+                for (int x = 0; x < sortingList.Count() - 1; x++) 
+                {
+                    buffer = sortingList[x];
+
+                    if(x == sortingList.Count())
                     {
-                        TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {100}%";
+                        continue;
                     }
                     else
                     {
-                        TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {i % 100}%";
-                    }
-
-                    BubbleSortBox.Clear();
-
-                    for (int x = 0; x < sortingList.Count() - 1; x++) 
-                    {
-                        buffer = sortingList[x];
-
-                        if(x == sortingList.Count())
+                        if (sortingList[x+1] < buffer)
                         {
-                            continue;
-                        }
-                        else
-                        {
-                            if (sortingList[x+1] < buffer)
-                            {
-                                sortingList[x]    = sortingList[x+1];
-                                sortingList[x+1]  = buffer;
-                            }
+                            sortingList[x]    = sortingList[x+1];
+                            sortingList[x+1]  = buffer;
                         }
                     }
-
-                    BubbleSortBox.AppendText("\n\n");
-                    counter = 1;
-
-                    foreach (var item in sortingList)
-                    {
-                        if (counter % 8 == 0)
-                        {
-                            BubbleSortBox.AppendText($"\n{item}\t");
-                        }
-
-                        BubbleSortBox.AppendText($"{item}\t");
-
-                        counter++;
-                    }
-
-                    await Task.Delay(200);
                 }
+
+                BubbleSortBox.AppendText("\n\n");
+                counter = 1;
+
+                foreach (var item in sortingList)
+                {
+                    if (counter % 8 == 0)
+                    {
+                        BubbleSortBox.AppendText($"\n{item}\t");
+                    }
+
+                    BubbleSortBox.AppendText($"{item}\t");
+
+                    counter++;
+                }
+
+                await Task.Delay(200);
             }
 
             sortingList.Clear();
