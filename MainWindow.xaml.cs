@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics.Metrics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,14 +24,32 @@ namespace BubbleSortAnimatedWPF
             797,  885,  501,  706,  84,  771,  782,  380,  916,  484,  525,  135,  495,  265,  428,  389,  662,  411,  876,  604, 650, 915, 637, 159, 123, 182
         };
 
-        bool bubblesort_active = false;
-        bool bubblesort_paused = false;
+        int counter             = 1;
+        bool bubblesort_active  = false;
+        bool bubblesort_paused  = false;
 
         public MainWindow()
         {
             InitializeComponent();
 
             this.SizeChanged += OnWindowSizeChanged;
+
+            BubbleSortBox.AppendText("\n\n");
+
+            foreach (var item in unsortedIntegerList)
+            {
+
+                if (counter % 9 == 0)
+                {
+                    BubbleSortBox.AppendText($"\n{item}\t");
+                }
+                else
+                {
+                    BubbleSortBox.AppendText($"{item}\t");
+                }
+
+                counter++;
+            }
         }
 
         // Event-Methode wenn Fenstergröße sich ändert ! In der Methode wird die Bubblesort Box und das Label dafür responsiv gemacht (Abhängig von Fenstergröße)
@@ -45,13 +64,13 @@ namespace BubbleSortAnimatedWPF
             Thickness newBoxMargin      = BubbleSortBox.Margin;
             Thickness newLabelMargin    = BubbleSortBox.Margin;
 
-            newBoxMargin.Left           = (newWindowWidth / 2) - (BubbleSortBox.ActualWidth / 2) - 330;
-            newBoxMargin.Top            = (newWindowHeight / 2) - (BubbleSortBox.ActualHeight / 2) - 19.5;
-            newLabelMargin.Left         = (newWindowWidth / 2) - (BubbleSortBox.ActualWidth / 6) + 40;
-            newLabelMargin.Top          = (newWindowHeight / 2) - (BubbleSortBox.ActualHeight / 2) - 20;
+            newBoxMargin.Left = (newWindowWidth / 2) - (BubbleSortBox.ActualWidth / 2) - 200;
+            newBoxMargin.Top = (newWindowHeight / 2) - (BubbleSortBox.ActualHeight / 2) - 210;
+            newLabelMargin.Left = (newWindowWidth / 2) - (BubbleSortBox.ActualWidth / 2) + 130;
+            newLabelMargin.Top = (newWindowHeight / 2) - (BubbleSortBox.ActualHeight / 2) - 220;
 
-            BubbleSortBox.Margin        = newBoxMargin;
-            BubbleSortBoxLabel.Margin   = newLabelMargin;
+            BubbleSortBox.Margin = newBoxMargin;
+            BubbleSortBoxLabel.Margin = newLabelMargin;
 
             //BubbleSortBox.Text = "\n\nW-Width: " + newWindowWidth.ToString() + "\nBox-Width: " + BubbleSortBox.Margin.ToString();
         }
@@ -64,32 +83,9 @@ namespace BubbleSortAnimatedWPF
 
             int buffer  = 0;
 
-            int counter = 1;
-
-            BubbleSortBox.Clear();
-
-            await Task.Delay(750);
-
-            BubbleSortBox.AppendText("\n\n");
-
             foreach (var item in unsortedIntegerList)
             {
                 sortingList.Add(item);
-            }
-
-            foreach (var item in sortingList)
-            {
-
-                if(counter % 9 == 0)
-                {
-                    BubbleSortBox.AppendText($"\n{item}\t");
-                }
-                else
-                {
-                    BubbleSortBox.AppendText($"{item}\t");
-                }
-
-                counter++;
             }
 
             TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {0}%";
