@@ -149,7 +149,7 @@ namespace BubbleSortAnimatedWPF
                 sortingList.Add(item);
             }
 
-            TaskPercentCompleted.Content    = $"Algorithmus Fortschritt: {0}%";
+            TaskPercentCompleted.Content    = $"Sorting Progress: {0}%";
             TaskPercentCompleted.Visibility = Visibility.Visible;
 
             await Task.Delay(3000);
@@ -174,11 +174,11 @@ namespace BubbleSortAnimatedWPF
 
                 if (i % 100 == 0 && i != 0)
                 {
-                    TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {100}%";
+                    TaskPercentCompleted.Content = $"Sorting Progress: {100}%";
                 }
                 else
                 {
-                    TaskPercentCompleted.Content = $"Algorithmus Fortschritt: {i % 100}%";
+                    TaskPercentCompleted.Content = $"Sorting Progress: {i % 100}%";
                 }
 
                 for (int x = 0; x < sortingList.Count() - 1; x++) 
