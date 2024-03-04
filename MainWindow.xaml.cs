@@ -54,7 +54,7 @@ namespace BubbleSortAnimatedWPF
 
             GeneratingRandomNumbers.Visibility = Visibility.Visible;
 
-            for (int rd = 100; rd > 0; rd--)
+            for (int rd = 99; rd > 0; rd--)
             {
                 await Task.Delay(100);
 
@@ -85,18 +85,18 @@ namespace BubbleSortAnimatedWPF
 
             GeneratingRandomNumbers.Visibility = Visibility.Collapsed;
 
-            BubbleSortBox.AppendText("\n\n");
+            BubbleSortBox.AppendText("\n\n\t");
 
             foreach (var item in randomIntegerList)
             {
 
                 if (counter % 9 == 0)
                 {
-                    BubbleSortBox.AppendText($"\n\t{item}");
+                    BubbleSortBox.AppendText($"{item}\n\t");
                 }
                 else
                 {
-                    BubbleSortBox.AppendText($"\t{item}");
+                    BubbleSortBox.AppendText($"{item}\t");
                 }
 
                 counter++;
@@ -201,17 +201,17 @@ namespace BubbleSortAnimatedWPF
 
                 BubbleSortBox.Clear();
 
-                BubbleSortBox.AppendText("\n\n");
+                BubbleSortBox.AppendText("\n\n\t");
 
                 foreach (var item in sortingList)
                 {
                     if (counter % 9 == 0)
                     {
-                        BubbleSortBox.AppendText($"\n\t{item}");
+                        BubbleSortBox.AppendText($"{item}\n\t");
                     }
                     else
                     {
-                        BubbleSortBox.AppendText($"\t{item}");
+                        BubbleSortBox.AppendText($"{item}\t");
                     }
 
                     counter++;

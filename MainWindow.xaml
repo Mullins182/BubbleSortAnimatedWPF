@@ -22,10 +22,10 @@
 
         <!-- Beginn UI-Elemente -->
 
-        <TextBox x:Name="BubbleSortBox" Grid.Row="1" Grid.Column="1" Height="500" Width="950" Background="Black" Foreground="FloralWhite"
-                   FontSize="23" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" BorderBrush="DarkGoldenrod" BorderThickness="1.5"
-                 IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"
-                 MouseEnter="BubbleSortBox_MouseEnter" MouseLeave="BubbleSortBox_MouseLeave" SelectionBrush="DarkGoldenrod" TextAlignment="Justify"/>
+        <TextBox x:Name="BubbleSortBox" Grid.Row="1" Grid.Column="1" Height="450" Width="950" Background="Black" Foreground="FloralWhite"
+                   FontSize="23" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" BorderBrush="DarkGoldenrod" BorderThickness="1.5"
+                 IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Justify"
+                 MouseEnter="BubbleSortBox_MouseEnter" MouseLeave="BubbleSortBox_MouseLeave" SelectionBrush="DarkGoldenrod"/>
 
         <Label x:Name="BubbleSortBoxLabel" Grid.Column="1" Grid.Row="1" Width="200" Height="50" Content="Bubble Box" FontFamily="Chiller" FontSize="50"
                Foreground="OrangeRed"
