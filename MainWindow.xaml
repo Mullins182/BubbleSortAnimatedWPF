@@ -28,8 +28,7 @@
                  MouseEnter="BubbleSortBox_MouseEnter" MouseLeave="BubbleSortBox_MouseLeave" SelectionBrush="DarkGoldenrod"/>
 
         <Label x:Name="BubbleSortBoxLabel" Grid.Column="1" Grid.Row="1" Width="200" Height="50" Content="Bubble Box" FontFamily="Chiller" FontSize="50"
-               Foreground="OrangeRed"
-               VerticalAlignment="Top" HorizontalAlignment="Center"/>
+               Foreground="OrangeRed" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
         <Label x:Name="GeneratingRandomNumbers" Foreground="YellowGreen" Width="670" Height="50" FontSize="25" Background="Transparent"
                Visibility="Collapsed" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -40,10 +39,10 @@
 
         <StackPanel x:Name="button_stack" Grid.Row="2" Grid.Column="1" Height="auto" Width="auto" Margin="15">
 
-            <RibbonToggleButton x:Name="start_pause_button" Foreground="LimeGreen" Label="Start / Pause Sorting Algorithm"
-                                Height="50" Width="500" FontFamily="Chiller" FontSize="35" FontWeight="Bold" Margin="0,0,0,0" BorderBrush="Transparent"
-                                MouseOverBorderBrush="GreenYellow" ClickMode="Release" ToggleButton.Checked="start_pause_button_Checked"
-                                ToggleButton.Unchecked="start_pause_button_Unchecked">
+            <RibbonToggleButton x:Name="start_pause_button" Foreground="Orange" Label="Start / Pause Sorting Algorithm"
+                                Height="50" Width="500" FontFamily="Chiller" FontSize="37" FontWeight="Medium" Margin="0,0,0,0" BorderBrush="Transparent"
+                                MouseOverBorderBrush="LimeGreen" ClickMode="Release" ToggleButton.Checked="start_pause_button_Checked"
+                                ToggleButton.Unchecked="start_pause_button_Unchecked" Padding="0,15,0,0">
                 <RibbonToggleButton.Background>
                     <RadialGradientBrush RadiusX="4.0" RadiusY="4.0" SpreadMethod="Reflect">
                         <GradientStop Color="Black" Offset="0"/>
@@ -64,8 +63,8 @@
                 </RibbonToggleButton.MouseOverBackground>
             </RibbonToggleButton>
 
-            <RibbonButton x:Name="randoms_generate" Foreground="LimeGreen" Label="Generate Random Integers List"
-                                Height="50" Width="300" FontFamily="Chiller" FontSize="26" FontWeight="Bold" Margin="0,8,0,0" Padding="15"
+            <RibbonButton x:Name="randoms_generate" Foreground="Orange" Label="Generate Random Integers List"
+                                Height="50" Width="300" FontFamily="Chiller" FontSize="28" FontWeight="Medium" Margin="0,8,0,0" Padding="0,17,0,0"
                           MouseOverBorderBrush="Yellow" ClickMode="Release" Click="randoms_generate_Click">
                 <RibbonButton.Background>
                     <RadialGradientBrush RadiusX="4.0" RadiusY="4.0" SpreadMethod="Reflect">
@@ -82,7 +81,7 @@
             </RibbonButton>
 
             <RibbonButton x:Name="quit_program" Foreground="OrangeRed" Label="Exit"
-                                Height="50" Width="100" FontFamily="Chiller" FontSize="30" FontWeight="Bold" Margin="0,8,0,0" Padding="15"
+                                Height="50" Width="100" FontFamily="Chiller" FontSize="33" FontWeight="Medium" Margin="0,8,0,0" Padding="0,20,0,0"
                           MouseOverBorderBrush="Yellow" ClickMode="Release" Click="quit_program_Click">
                 <RibbonButton.Background>
                     <RadialGradientBrush RadiusX="4.0" RadiusY="4.0" SpreadMethod="Reflect">
@@ -96,7 +95,7 @@
                         <GradientStop Color="GreenYellow" Offset="1"/>
                     </RadialGradientBrush>
                 </RibbonButton.MouseOverBackground>
-            </RibbonButton>            
+            </RibbonButton>
         </StackPanel>
 
     </Grid>
