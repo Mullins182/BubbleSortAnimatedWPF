@@ -52,7 +52,7 @@
         <TextBox x:Name="BubbleSortBox" Grid.Row="1" Grid.Column="1" Height="450" Width="950" Background="Black" Foreground="#E5E500"
                    FontSize="23" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" BorderBrush="DarkGoldenrod" BorderThickness="1.5"
                  IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Justify" CacheMode="BitmapCache" SelectionOpacity="0.3"
-                 MouseEnter="BubbleSortBox_MouseEnter" MouseLeave="BubbleSortBox_MouseLeave" IsInactiveSelectionHighlightEnabled="False" IsEnabled="False"/>
+                 MouseEnter="BubbleSortBox_MouseEnter" MouseLeave="BubbleSortBox_MouseLeave" IsInactiveSelectionHighlightEnabled="True" IsEnabled="False"/>
 
         <Label x:Name="BubbleSortBoxLabel" Grid.Column="1" Grid.Row="1" Width="200" Height="50" Content="Bubble Box" FontFamily="Chiller" FontSize="50"
 

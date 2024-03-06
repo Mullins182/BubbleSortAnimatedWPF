@@ -133,16 +133,18 @@ namespace BubbleSortAnimatedWPF
 
         private async void BubbleSorting(List<int> randomsList)
         {
-            randoms_generate.IsEnabled      = false;
+            randoms_generate.IsEnabled      = false;                    // Buttons
             quit_program.IsEnabled          = false;
 
-            List<int> sortingList = new List<int>();
+            List<int> sortingList           = new List<int>();
 
-            int counter = 1;
+            int counter                     = 1;                        // Counter for generating Newline in BubbleBox
+            int sortingDelay                = 255;                      // Standard Sorting Algorithm Delay
 
-            bubbleSort_active = true;
-
-            int buffer  = 0;
+            bubbleSort_active               = true;
+            bool sortingCompleted           = true;                     // Is for Delay Change of Sorting Algorithm ... When true after inner For-Loop
+                                                                        // has finished, then the Delay is changed to shorter Value !
+            int buffer                      = 0;                        // Buffer for Sorting Algorithm
 
             foreach (var item in randomsList)
             {
@@ -156,6 +158,7 @@ namespace BubbleSortAnimatedWPF
 
             for(int i = 0; i <= 100; i++)
             {
+                sortingCompleted = true;
 
                 while (bubbleSort_paused)
                 {
@@ -172,7 +175,7 @@ namespace BubbleSortAnimatedWPF
                     BubbleSortBoxLabel.Foreground = Brushes.YellowGreen;
                 }
 
-                if (i % 100 == 0 && i != 0)
+                if (i % 100 == 0 && i != 0)                                 // Sorting Progress Label Logic
                 {
                     TaskPercentCompleted.Content = $"Sorting Progress: {100}%";
                 }
@@ -191,12 +194,19 @@ namespace BubbleSortAnimatedWPF
                     }
                     else
                     {
-                        if (sortingList[x+1] < buffer)
+                        if (sortingList[x+1] < buffer)                      // Sorting Algorithm
                         {
-                            sortingList[x]    = sortingList[x+1];
-                            sortingList[x+1]  = buffer;
+                            sortingCompleted    = false;
+
+                            sortingList[x]      = sortingList[x+1];
+                            sortingList[x+1]    = buffer;
                         }
                     }
+                }
+
+                if(sortingCompleted && sortingDelay != 77)                  // Sorting Algorithm Delay SpeedUp when Sorting Process finished !
+                {
+                    sortingDelay = 77;
                 }
 
                 BubbleSortBox.Clear();
@@ -217,7 +227,7 @@ namespace BubbleSortAnimatedWPF
                     counter++;
                 }
 
-                await Task.Delay(255);
+                await Task.Delay(sortingDelay);
             }
 
             await Task.Delay(4000);
