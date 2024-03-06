@@ -7,6 +7,33 @@
         mc:Ignorable="d"
         Title="B U B B L E - S O R T | By Mullins182" MinWidth="1200" MinHeight="850" MaxHeight="850" MaxWidth="1200"
         WindowState="Normal" WindowStartupLocation="CenterScreen" FontSize="10" Background="Black">
+
+    <!--Control Template Override für Buttons um Highlighting bei Mouseover zu verhindern !-->
+    
+    <Window.Resources>
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate"
+                 TargetType="Button">
+            <Border Background="{TemplateBinding Background}"
+          BorderBrush="{TemplateBinding BorderBrush}"
+          BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled"  
+             Value="False">
+                    <Setter Property="Background"  
+              Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground"  
+              Value="{x:Static SystemColors.GrayTextBrush}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <!--Control Templates Override ENDE !-->
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
@@ -22,10 +49,10 @@
 
         <!-- Beginn UI-Elemente -->
 
-        <TextBox x:Name="BubbleSortBox" Grid.Row="1" Grid.Column="1" Height="450" Width="950" Background="Black" Foreground="#CA2B00"
+        <TextBox x:Name="BubbleSortBox" Grid.Row="1" Grid.Column="1" Height="450" Width="950" Background="Black" Foreground="#E5E500"
                    FontSize="23" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" BorderBrush="DarkGoldenrod" BorderThickness="1.5"
-                 IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Justify"
-                 MouseEnter="BubbleSortBox_MouseEnter" MouseLeave="BubbleSortBox_MouseLeave" SelectionBrush="DarkGoldenrod"/>
+                 IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Justify" CacheMode="BitmapCache" SelectionOpacity="0.3"
+                 MouseEnter="BubbleSortBox_MouseEnter" MouseLeave="BubbleSortBox_MouseLeave" IsInactiveSelectionHighlightEnabled="False" IsEnabled="False"/>
 
         <Label x:Name="BubbleSortBoxLabel" Grid.Column="1" Grid.Row="1" Width="200" Height="50" Content="Bubble Box" FontFamily="Chiller" FontSize="50"
 
