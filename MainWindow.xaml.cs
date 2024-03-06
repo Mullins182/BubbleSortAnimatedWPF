@@ -26,13 +26,14 @@ namespace BubbleSortAnimatedWPF
         //};
 
         private List<int> randomIntegerList = new List<int>();
+        List<int> sortingList = new List<int>();
 
         private Random generateRandoms = new Random();
 
-        //int     counter            = 1;
-        bool    bubbleSort_active  = false;
-        bool    bubbleSort_paused  = false;
-
+        bool    bubbleSort_active       = false;
+        bool    bubbleSort_paused       = false;
+        bool    useSortedIntegersList   = false;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -45,10 +46,13 @@ namespace BubbleSortAnimatedWPF
         // Algorithm to generate a list of random Integers and output the list in Textbox
         private async void RandomGenerator()
         {
-            int counter         = 1;
-            int random_number   = 0;
+            int counter             = 1;
+            int random_number       = 0;
+
+            useSortedIntegersList   = false;
 
             randomIntegerList.Clear();
+            sortingList.Clear();
 
             BubbleSortBox.Clear();
 
@@ -136,8 +140,6 @@ namespace BubbleSortAnimatedWPF
             randoms_generate.IsEnabled      = false;                    // Buttons
             quit_program.IsEnabled          = false;
 
-            List<int> sortingList           = new List<int>();
-
             int counter                     = 1;                        // Counter for generating Newline in BubbleBox
             int sortingDelay                = 255;                      // Standard Sorting Algorithm Delay
 
@@ -146,9 +148,12 @@ namespace BubbleSortAnimatedWPF
                                                                         // has finished, then the Delay is changed to shorter Value !
             int buffer                      = 0;                        // Buffer for Sorting Algorithm
 
-            foreach (var item in randomsList)
+            if(!useSortedIntegersList) 
             {
-                sortingList.Add(item);
+                foreach (var item in randomsList)
+                {
+                    sortingList.Add(item);
+                }            
             }
 
             TaskPercentCompleted.Content    = $"Sorting Progress: {0}%";
@@ -232,12 +237,11 @@ namespace BubbleSortAnimatedWPF
 
             await Task.Delay(4000);
 
-            sortingList.Clear();
-
             BubbleSortBoxLabel.Foreground   = Brushes.DarkGoldenrod;
             bubbleSort_active               = false;
             start_pause_button.IsChecked    = false;
             bubbleSort_paused               = false;
+            useSortedIntegersList           = true;
             TaskPercentCompleted.Visibility = Visibility.Collapsed;
             randoms_generate.IsEnabled      = true;
             quit_program.IsEnabled          = true;
@@ -264,7 +268,14 @@ namespace BubbleSortAnimatedWPF
             }
             else
             {
-                BubbleSorting(randomIntegerList);
+                if(!useSortedIntegersList)
+                {
+                    BubbleSorting(randomIntegerList);
+                }
+                else
+                {
+                    BubbleSorting(sortingList);
+                }
             }
         }
 
