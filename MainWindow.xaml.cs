@@ -159,17 +159,17 @@ namespace BubbleSortAnimatedWPF
 
                 while (bubbleSort_paused)
                 {
-                    if(BubbleSortBoxLabel.Foreground != Brushes.OrangeRed) 
+                    if(BubbleSortBoxLabel.Foreground != Brushes.DarkGoldenrod) 
                     {
-                        BubbleSortBoxLabel.Foreground = Brushes.OrangeRed;
+                        BubbleSortBoxLabel.Foreground = Brushes.DarkGoldenrod;
                     }
 
                     await Task.Delay(150);
                 }
 
-                if(BubbleSortBoxLabel.Foreground != Brushes.GreenYellow) 
+                if(BubbleSortBoxLabel.Foreground != Brushes.YellowGreen) 
                 {
-                    BubbleSortBoxLabel.Foreground = Brushes.GreenYellow;                
+                    BubbleSortBoxLabel.Foreground = Brushes.YellowGreen;
                 }
 
                 if (i % 100 == 0 && i != 0)
@@ -217,14 +217,14 @@ namespace BubbleSortAnimatedWPF
                     counter++;
                 }
 
-                await Task.Delay(200);
+                await Task.Delay(255);
             }
 
             await Task.Delay(4000);
 
             sortingList.Clear();
 
-            BubbleSortBoxLabel.Foreground   = Brushes.OrangeRed;
+            BubbleSortBoxLabel.Foreground   = Brushes.DarkGoldenrod;
             bubbleSort_active               = false;
             start_pause_button.IsChecked    = false;
             bubbleSort_paused               = false;
